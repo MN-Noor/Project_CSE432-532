@@ -13,13 +13,16 @@ source venv/bin/activate
 # 2. Install dependencies
 pip install -r requirements.txt
 
-# 3. Download RAVDESS audio-only data
+# 3. Install MiniLearn in editable mode
+pip install -e .
+
+# 4. Download RAVDESS audio-only data
 python download_data.py
 
-# 4. Extract features
+# 5. Extract features
 # e.g. python extract_features.py --data_dir data/ --output features.csv
 
-# 5. Open the classification notebook
+# 6. Open the classification notebook
 jupyter notebook notebooks/01_classification.ipynb
 ```
 
