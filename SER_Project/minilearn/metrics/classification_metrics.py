@@ -166,3 +166,41 @@ def classification_report(y_true, y_pred, labels=None):
         'accuracy'            : accuracy(y_true, y_pred),
     }
 
+def plot_confusion_matrix(y_true, y_pred, labels=None,
+                           title='Confusion Matrix', ax=None):
+    """
+    Plot confusion matrix as a heatmap.
+    Diagonal = correct, off-diagonal = misclassifications.
+    """
+    import matplotlib.pyplot as plt
+
+    cm, classes    = confusion_matrix(y_true, y_pred)
+    display_labels = labels if labels is not None else classes
+
+    if ax is None:
+        fig, ax = plt.subplots(figsize=(9, 7))
+
+    # normalise so each row sums to 1 (shows proportions not raw counts)
+    cm_norm = cm.astype(float) / cm.sum(axis=1, keepdims=True)
+
+    im = ax.imshow(cm_norm, interpolation='nearest', cmap='Blues')
+    plt.colorbar(im, ax=ax)
+
+    ax.set_xticks(np.arange(len(classes)))
+    ax.set_yticks(np.arange(len(classes)))
+    ax.set_xticklabels(display_labels, rotation=45, ha='right')
+    ax.set_yticklabels(display_labels)
+
+    # annotate each cell with raw count and percentage
+    thresh = cm_norm.max() / 2
+    for i in range(len(classes)):
+        for j in range(len(classes)):
+            ax.text(j, i,
+                    f"{cm[i,j]}\n({cm_norm[i,j]:.0%})",
+                    ha='center', va='center', fontsize=8,
+                    color='white' if cm_norm[i,j] > thresh else 'black')
+
+    ax.set_xlabel('Predicted label')
+    ax.set_ylabel('True label')
+    ax.set_title(title)
+    return ax
