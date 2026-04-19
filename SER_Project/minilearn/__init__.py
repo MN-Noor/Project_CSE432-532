@@ -6,6 +6,7 @@ Speech Emotion Recognition project.
 
 Usage:
     from minilearn.classifiers import LogisticRegression, KNN, GaussianNaiveBayes, DecisionTreeClassifier
+    from minilearn.regression import LinearRegression, RidgeRegression, LassoRegression
     from minilearn.preprocessing import StandardScaler, train_test_split
     from minilearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 """
