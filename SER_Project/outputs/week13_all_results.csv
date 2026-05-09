@@ -1,0 +1,11 @@
+Model,Macro F1
+Gaussian Naive Bayes (W7),0.3343
+CART MiniLearn (W9),0.3762
+Random Forest sklearn (W9),0.5464
+KNN k=3 manhattan (W7),0.6009
+Logistic Regression (W7),0.6236
+MiniLearn ANN (W13),0.6264950865351426
+"sklearn MLP (128,64) (W13)",0.6608305843567358
+"sklearn MLP (64,) (W13)",0.6818033503787948
+"sklearn MLP (256,128,64) (W13)",0.6899103423446471
+SVM RBF sklearn (W8),0.7359
