@@ -1,0 +1,43 @@
+## Final Ranking
+1. SVM RBF (sklearn)         0.7359 
+2. PyTorch Dense ANN         0.7240
+3. sklearn MLP (256,128,64)  0.6899
+4. sklearn MLP (64,)         0.6818
+5. MiniLearn ANN             0.6265
+6. Logistic Regression       0.6236
+7. KNN                       0.6009
+8. Random Forest             0.5464
+9. CART                      0.3762
+10. Gaussian Naive Bayes     0.3343
+
+## Project Conclusion
+
+### Best performing model: SVM RBF (F1=0.7359)
+The RBF kernel's ability to draw non-linear boundaries in 
+implicit infinite-dimensional space made it best suited for 
+separating the 8 emotion clusters in our 112-feature space.
+
+### Why deep ANN (0.724) nearly matches SVM
+Both model non-linear boundaries. SVM does it analytically 
+via the kernel trick. ANN does it by learning intermediate 
+representations. With only 1956 training samples and 112 
+features, SVM's analytical solution has an advantage over 
+gradient-based ANN training.
+
+### Hardest emotions across all models
+Sad (F1≈0.48) and fearful (F1≈0.50) were consistently the 
+hardest. Both are low-to-medium arousal negative emotions 
+with overlapping spectral profiles. Even humans confuse these.
+
+### What limited performance
+1. 112 hand-crafted features miss temporal dynamics
+2. Only 1956 training samples — small for deep learning
+3. Actor-dependent patterns — model may learn voice identity
+4. Emotions exist on a continuum, not discrete categories
+
+### What would push beyond 75%
+1. Pre-trained embeddings (wav2vec2, HuBERT) — learn features 
+   directly from raw audio on massive datasets
+2. 1D-CNN or LSTM on raw waveform — captures temporal patterns
+3. Speaker-independent evaluation — train/test split by actor
+4. Data augmentation — pitch shift, time stretch, noise addition
